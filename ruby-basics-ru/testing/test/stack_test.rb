@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+require 'minitest/autorun'
 
 require_relative 'test_helper'
 require_relative '../lib/stack'
@@ -6,33 +7,44 @@ require_relative '../lib/stack'
 class StackTest < Minitest::Test
   # BEGIN
   def setup
-    @stack = Stack.new [1, 2, 3]
+    @stack = Stack.new
   end
 
-  def test_add_stack_success
-    initial_size = @stack.size
-    @stack.push! 4
+  def test_push!
+    @stack.push!('one')
+    expected_array = ['one']
 
-    assert { initial_size < @stack.size }
+    assert(@stack.to_a == expected_array)
   end
 
-  def test_remove_stack_success
-    initial_size = @stack.size
+  def test_pop
+    @stack.push!('one')
+    @stack.push!('two')
+    @stack.push!('three')
+
     @stack.pop!
 
-    assert { initial_size > @stack.size }
+    expected_array = ['one', 'two']
+
+    assert(expected_array === @stack.to_a)
   end
 
-  def test_clear_stack_success
+  def test_clear
+    @stack.push!('one')
+    @stack.push!('two')
+    @stack.push!('three')
+
     @stack.clear!
 
-    assert { @stack.size == 0 }
+    assert(@stack.to_a.empty?)
   end
 
-  def test_empty_stack_success
-    @stack.clear!
+  def test_empty
+    assert(@stack.to_a.empty?)
+  end
 
-    assert { @stack.empty? }
+  def after_teardown
+    @stack.clear!
   end
   # END
 end
