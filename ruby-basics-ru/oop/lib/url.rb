@@ -14,9 +14,13 @@ class Url
     @url = URI(url)
   end
 
-  def_delegators :@url, :scheme, :host, :port, :path
+  def_delegators :@url, :scheme, :host, :port, :path, :port
 
   def query_params
+    if url.query.nil?
+      return {}
+    end
+
     queries = url.query.split '&'
     queries.each_with_object({}) do |q, acc|
       query_splitted = q.split('=')
@@ -34,8 +38,9 @@ class Url
     is_host_eql = host == other.host
     is_path_eql = path == other.path
     is_query_params_eql = query_params == other.query_params
+    is_port_eql = port == other.port
 
-    is_scheme_eql && is_host_eql && is_path_eql && is_query_params_eql
+    is_scheme_eql && is_host_eql && is_path_eql && is_query_params_eql && is_port_eql
   end
 end
 # END
