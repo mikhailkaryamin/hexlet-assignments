@@ -374,21 +374,23 @@ Bus.colorized?
 ### Вызовы классов и модулей ###
 
 # Короткая запись - Books::HarryPotter.glasses
+module HarryPotter
+  def self.magic
+    pp 'magic'
+  end
+end
+
 module Books
   module HarryPotter
-    def glasses
+    def self.glasses
+      pp 'glasses'
     end
   end
 
-  # Вызывается модуль Books::HarryPotter
+  # Вызов метода из модуля Books::HarryPotter
   HarryPotter::glasses
   # Вызов метода из модуля HarryPotter (который находится глобально)
   ::HarryPotter::magic
-end
-
-module HarryPotter
-  def magic
-  end
 end
 
 ### method_missing ###
