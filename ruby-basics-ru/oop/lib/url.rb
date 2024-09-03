@@ -6,12 +6,15 @@ require 'uri'
 class Url
   attr_accessor :url
 
+  attr_reader :default_url
+
   include Comparable
 
   extend Forwardable
 
   def initialize(url)
     @url = URI(url)
+    @default_url = url
   end
 
   def_delegators :@url, :scheme, :host, :port, :path, :port
@@ -34,13 +37,15 @@ class Url
   end
 
   def ==(other)
-    is_scheme_eql = scheme  == other.scheme
-    is_host_eql = host == other.host
-    is_path_eql = path == other.path
-    is_query_params_eql = query_params == other.query_params
-    is_port_eql = port == other.port
+    url_without_params = URI.split(default_url)
+    other_url_without_params = URI.split(other.default_url)
+    url_without_params.delete_at(7)
+    other_url_without_params.delete_at(7)
 
-    is_scheme_eql && is_host_eql && is_path_eql && is_query_params_eql && is_port_eql
+    is_without_params_eql = url_without_params  == other_url_without_params
+    is_query_params_eql = query_params == other.query_params
+
+    is_without_params_eql && is_query_params_eql
   end
 end
 # END
