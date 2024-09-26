@@ -50,7 +50,7 @@ puts post.attributes <span class="hljs-comment"># =&gt; {:title=&gt;&quot;Goodby
 <p>Модуль <em>Model</em> содержит метод <code>attribute(name, [options = {}])</code>, который принимает следующие параметры.</p>
 <ul>
 <li data-marpit-fragment="3"><code>name</code> - имя атрибута</li>
-<li data-marpit-fragment="4"><code>options</code> - опции атрибута в виде хеша. Ключ <code>type</code> отвечает за тип, в который будет преобразовываться атрибут при получении. Если тип не указан, то атрибут не преобразуется. Преобразуются все значения, которые <code>nil</code>. В случае <code>nil</code> возвращается всегда <code>nil</code></li>
+<li data-marpit-fragment="4"><code>options</code> - опции атрибута в виде хеша. Ключ <code>type</code> отвечает за тип, в который будет преобразовываться атрибут при получении. Если тип не указан, то атрибут не преобразуется. Преобразуются все значения, которые не <code>nil</code>. В случае <code>nil</code> возвращается всегда <code>nil</code></li>
 </ul>
 <p>Когда <em>Model</em> подключается в класс, то класс приобретает следующие методы:</p>
 <ul>
