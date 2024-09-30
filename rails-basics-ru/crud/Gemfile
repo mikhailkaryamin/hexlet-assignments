@@ -25,10 +25,7 @@ gem 'cssbundling-rails'
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'jbuilder'
 
-# gem "importmap-rails"
-
 group :development, :test do
-  gem 'faker'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
 end
@@ -41,6 +38,7 @@ group :development do
 end
 
 group :test do
+  gem 'faker'
   gem 'minitest-power_assert'
 end
 

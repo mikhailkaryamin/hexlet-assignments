@@ -8,6 +8,7 @@
 
     <%= stylesheet_link_tag 'application', 'data-turbo-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbo-track': 'reload', defer: true %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
 
   <body>
@@ -19,7 +20,9 @@
     <% end %>
     <ul>
       <li><%= link_to 'Home', root_path %></li>
-      <li><%= link_to 'Tasks', tasks_path %></li>
+      <%# BEGIN %>
+      
+      <%# END %>
     </ul>
     <%= yield %>
   </body>
