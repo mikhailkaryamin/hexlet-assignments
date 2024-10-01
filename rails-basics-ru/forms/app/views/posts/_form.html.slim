@@ -1,0 +1,6 @@
+= simple_form_for @post do |p|
+  = p.input :title
+  = p.input :body
+  = p.input :summary
+  = p.input :published
+  = p.button :submit, class: 'btn-success', id: 'submit'

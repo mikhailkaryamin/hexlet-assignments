@@ -1,0 +1,8 @@
+h1
+  | Posts
+
+= link_to 'New', new_post_path
+
+- @posts.each do |post|
+  div
+    p= link_to post.title, post_path(post)
