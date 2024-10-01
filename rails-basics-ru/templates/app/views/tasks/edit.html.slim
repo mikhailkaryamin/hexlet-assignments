@@ -1,0 +1,7 @@
+h1
+  | Edit task
+
+= render 'form', task: @task
+
+= link_to 'Show', task_path(@task)
+= link_to 'Back', root_path

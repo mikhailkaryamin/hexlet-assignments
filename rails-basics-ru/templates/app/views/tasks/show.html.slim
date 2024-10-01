@@ -1,0 +1,30 @@
+div
+  h2
+    = @task.name
+  div
+    h3
+      | Creator
+    p= @task.creator
+  div
+    h3
+      | Description
+    p= @task.description
+  div
+    h3
+      | Performer
+    p= @task.performer
+  div
+    h3
+      | Status
+    p= @task.status
+  div
+      h3
+      | Completed
+      - if @task.completed
+          p Yes
+      - else
+          p No
+  hr
+  = link_to 'Back', root_path
+  = link_to 'Edit', edit_task_path(@task)
+  = link_to 'Destroy', task_path(@task), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }

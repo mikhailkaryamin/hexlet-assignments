@@ -1,0 +1,26 @@
+= form_with model: @task do |form|
+  div style="margin-bottom: 20px;"
+    = form.label :name
+    = form.text_field :name
+
+  div style="margin-bottom: 20px;"
+    = form.label :creator
+    = form.collection_select :creator, Task.order(:creator), :creator, :creator
+
+  div style="margin-bottom: 20px;"
+    = form.label :description
+    = form.text_area :description
+
+  div style="margin-bottom: 20px;"
+    = form.label :performer
+    = form.collection_select :performer, Task.order(:performer), :performer, :performer
+
+  div style="margin-bottom: 20px;"
+    = form.label :status
+    = form.select :status, ["New", "In progress", "Test", "Completed"]
+
+  div style="margin-bottom: 20px;"
+    = form.label :completed
+    = form.check_box :completed
+
+  = form.submit
