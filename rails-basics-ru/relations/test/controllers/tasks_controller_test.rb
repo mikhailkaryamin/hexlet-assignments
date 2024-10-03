@@ -1,33 +1,58 @@
 require "test_helper"
 
 class TasksControllerTest < ActionDispatch::IntegrationTest
-  test "should get index" do
-    get task_index_url
+  setup do
+    @task = tasks(:one)
+
+    @attrs = {
+      name: 'MyString New',
+      description: 'MyText New',
+      user_id: users(:one).id,
+      status_id: statuses(:one).id,
+    }
+  end
+
+  test 'should get index' do
+    get tasks_url
     assert_response :success
   end
 
-  test "should get show" do
-    get task_show_url
+  test 'should get new' do
+    get new_task_url
     assert_response :success
   end
 
-  test "should get new" do
-    get task_new_url
+  test 'should create task' do
+    post tasks_url, params: { task: @attrs }
+    task = Task.find_by(@attrs)
+    assert { task }
+    assert_redirected_to task_url(task)
+  end
+
+  test 'should show task' do
+    get task_url(@task)
     assert_response :success
   end
 
-  test "should get edit" do
-    get task_edit_url
+  test 'should get edit' do
+    get edit_task_url(@task)
     assert_response :success
   end
 
-  test "should get create" do
-    get task_create_url
-    assert_response :success
+  test 'should update task' do
+    patch task_url(@task), params: { task: @attrs }
+
+    @task.reload
+
+    assert { @task.name == @attrs[:name] }
+    assert_redirected_to task_url(@task)
   end
 
-  test "should get update" do
-    get task_update_url
-    assert_response :success
+  test 'should destroy task' do
+    delete task_url(@task)
+
+    assert { !Task.exists? @task.id }
+
+    assert_redirected_to tasks_url
   end
 end

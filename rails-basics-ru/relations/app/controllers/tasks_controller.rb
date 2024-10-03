@@ -16,7 +16,7 @@ class TasksController < ApplicationController
   end
 
   def create
-    @task = Task.new(task_params)
+    @task = Task.create(task_params)
 
     if @task.save
       redirect_to @task, notice: 'Task was successfully created.'
@@ -36,7 +36,7 @@ class TasksController < ApplicationController
   end
 
   def destroy
-    @task = Task.find(patams[:id])
+    @task = Task.find(params[:id])
 
     @task.destroy
 
