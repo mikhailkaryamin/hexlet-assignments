@@ -1,0 +1,8 @@
+= content_for :title do
+  = @status.name
+
+hr
+
+.d-flex
+  = link_to 'Edit', edit_status_path(@status), class: 'btn btn-outline-primary me-2'
+  = link_to 'Back', statuses_path, class: 'btn btn-outline-primary'
