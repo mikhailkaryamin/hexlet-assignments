@@ -1,0 +1,35 @@
+- content_for :title do
+  = @post.title
+p
+  strong.me-2 Body:
+  = @post.body
+hr
+
+.d-flex
+  = link_to 'Edit', edit_post_path(@post), class: 'btn btn-outline-primary me-2'
+  = link_to 'Back', :back, class: 'btn btn-outline-primary'
+
+h4
+  | Comments
+
+  - @post.post_comments.each do |comment|
+    hr
+      p = comment.body
+      .d-flex
+        = link_to 'Edit', edit_post_comment_path(@post, comment), class: 'btn btn-outline-primary me-2'
+        = link_to 'Destroy', post_comment_path(@post, comment), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: 'link-danger'
+
+= form_with(model: @comment, url: post_comments_path(@post)) do |form|
+  - if @comment.errors.any?
+    div style="color: red"
+      h2 = "#{pluralize(@comment.errors.count, "error")} prohibited this comment from being saved:"
+      ul
+        - @comment.errors.each do |error|
+          li = error.full_message
+
+  div
+    = form.label :body, style: "display: block"
+    = form.text_area :body
+
+  div
+    = form.submit
