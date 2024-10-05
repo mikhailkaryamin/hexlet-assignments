@@ -1,0 +1,30 @@
+en:
+  activerecord:
+    models:
+      # BEGIN
+      post:
+        one: Post
+        other: Posts
+      # END
+      post/comment: 
+        one: Comment
+        other: Comments
+    attributes:
+      # BEGIN
+      post:
+        title: Title
+        body: Body
+      # END
+      post/comment:
+        body: Body
+
+    errors:
+      models:
+        post:
+          attributes:
+            # BEGIN
+            title:
+              blank: can't be blank
+            body:
+              blank: can't be blank
+            # END

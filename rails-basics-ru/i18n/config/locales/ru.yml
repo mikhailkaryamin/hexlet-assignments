@@ -1,0 +1,9 @@
+ru:
+  show: Показать
+  edit: Редактировать
+  destroy: Удалить
+  destroy_confirmation: Вы уверены?
+  back: Назад
+  hexlet_title: © Хекслет
+  hexlet_footer: © Хекслет, %{year}
+  hexlet_logo: Хекслет лого

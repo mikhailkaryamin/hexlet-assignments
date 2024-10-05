@@ -1,0 +1,41 @@
+- content_for :title do
+  / page title (h1)
+  / BEGIN
+  = t('pages.posts')
+  / END
+
+table.table.table-striped.table-hover.mb-5
+  thead
+    tr
+      th{ scope = 'col' } #
+      th{ scope = 'col' }
+        / table title
+        / BEGIN
+        = t('posts.title')
+        / END
+      th = t('posts.title_comments_count')
+      th
+
+  tbody
+    - @posts.each_with_index do |post, i|
+      tr
+        th{ scope = 'row' } = i + 1
+        td = post.title
+        td
+          / comments count
+          / BEGIN
+          =t('posts.comments_count', count: post.comments.count)
+          / END
+        td.d-flex
+          / posts links
+          / BEGIN
+          = link_to t('show'), post, class: 'btn btn-outline-primary me-2'
+          = link_to t('edit'), edit_post_path(post), class: 'btn btn-outline-primary me-2'
+          = link_to t('destroy'), post_path(post), class: 'btn btn-outline-danger me-2', data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }
+          / END
+
+/ new post link
+= link_to new_post_path, id: 'new-post-link', class: 'btn btn-primary' do
+  / BEGIN
+  = t('posts.buttons.add')
+  / END
