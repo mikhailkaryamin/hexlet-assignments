@@ -15,15 +15,15 @@ class Hacker
       authenticity_token = sign_up_html.at('input[@name="authenticity_token"]')['value']
 
       collective_blog_session_cookie = sign_up_response.response['set-cookie']
-        .split('; ')
-        .find { |c| c.start_with? '_collective_blog_session' }
+                                                       .split('; ')
+                                                       .find { |c| c.start_with? '_collective_blog_session' }
 
       params = {
         'user[email]': email,
         'user[password]': password,
         'user[password_confirmation]:': password,
-        'authenticity_token': authenticity_token,
-        'commit': "Регистрация"
+        authenticity_token: authenticity_token,
+        commit: 'Регистрация'
       }
 
       register_uri = URI('https://rails-collective-blog-ru.hexlet.app/users')
@@ -36,7 +36,7 @@ class Hacker
       http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
       register_response = http.request register_request
-      register_response.code.start_with? "3"
+      register_response.code.start_with? '3'
     end
   end
 end

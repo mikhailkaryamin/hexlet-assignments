@@ -6,7 +6,7 @@ require 'rake'
 class HackerTest < ActiveSupport::TestCase
   def setup
     @authenticity_token = 'auth-token'
-    @cookie = 'cookie-test'
+    @cookie = '_collective_blog_session=abc'
     @uri = 'https://rails-collective-blog-ru.hexlet.app'
   end
 
