@@ -8,7 +8,6 @@ class PostsTest < ApplicationSystemTestCase
     @post = posts(:one)
   end
 
-
   test 'visiting the index' do
     visit posts_url
     assert_selector 'h1', text: 'Posts'
@@ -31,8 +30,8 @@ class PostsTest < ApplicationSystemTestCase
   test 'should edit post' do
     visit post_url(@post)
     click_on 'edit-post'
-    fill_in 'Title', with: "some new Title"
-    fill_in 'Body', with: "some new Body"
+    fill_in 'Title', with: 'some new Title'
+    fill_in 'Body', with: 'some new Body'
     click_on 'Update Post'
     assert_text 'Post was successfully updated.'
   end
