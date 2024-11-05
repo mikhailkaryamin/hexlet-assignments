@@ -1,0 +1,11 @@
+en:
+  cocoon:
+    defaults:
+      add: "Add record"
+      remove: "Remove record"
+    works:
+      add: "Add work"
+      remove: "Remove work"
+    educations:
+      add: "Add education"
+      remove: "Remove education"
