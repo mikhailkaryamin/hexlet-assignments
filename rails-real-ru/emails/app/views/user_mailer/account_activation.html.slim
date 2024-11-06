@@ -1,0 +1,7 @@
+html
+  body
+    h1
+      | Hello, #{@user.name}
+    p
+      | Welcome to our test site. To complete registration follow the link below
+    = link_to "Complete registration", @confirmation_url
