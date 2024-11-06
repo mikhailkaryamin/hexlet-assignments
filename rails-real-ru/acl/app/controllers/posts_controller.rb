@@ -24,6 +24,7 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     authorize @post, :create?
+    # some
     @post.author = current_user
 
     if @post.save
